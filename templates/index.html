@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css') }}">
+    <title>Слова</title>
+</head>
+<body>
+    <div class="head_wrapper">
+        <form method="post" action="/words" class="main_form">
+            <input id="wordInput" type="text" name="word" placeholder="Слово" autocomplete="off" >
+            <!--<button type="submit">Try</button>-->
+        </form>
+        <div class="alerts">
+            {% with messages = get_flashed_messages() %}
+               {% if messages %}
+                  {% for message in messages %}
+                     <p3 style="color: #bd3a3a">{{ message }}</p3>
+                  {% endfor %}
+               {% endif %}
+            {% endwith %}
+        </div>
+        <div class="suc_list">
+            {%for word in ans%}
+            <p1>{{word}}</p1>
+            {%endfor%}
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('wordInput').focus();
+        };
+    </script>
+</body>
+</html>
